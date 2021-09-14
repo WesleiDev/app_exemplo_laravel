@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Dotenv\Exception\ValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -37,5 +38,7 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+
     }
 }

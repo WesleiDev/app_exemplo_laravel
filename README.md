@@ -10,6 +10,7 @@
    - [x] Casts
    - [] Observers
    - [] Scheduling
+   - [] FormRequest
 
 
 <h4>Instruções para utilização da plataforma</h4>   
