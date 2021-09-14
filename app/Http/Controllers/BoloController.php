@@ -45,7 +45,6 @@ class BoloController extends Controller
     public function store(BoloRequest $request)
     {
         try{
-            $request->validated();
 
             $data = $request->all();
             $bolo = Bolo::create($data);
