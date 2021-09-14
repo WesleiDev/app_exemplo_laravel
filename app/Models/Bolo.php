@@ -25,4 +25,8 @@ class Bolo extends Model
     function setValorAttribute($value){
         $this->attributes['valor'] = Utils::formatReal($value);
     }
+
+    function setPesoAttribute($value){
+        $this->attributes['peso'] = Utils::formatReal($value);
+    }
 }
