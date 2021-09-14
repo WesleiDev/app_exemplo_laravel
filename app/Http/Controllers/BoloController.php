@@ -48,7 +48,6 @@ class BoloController extends Controller
 
             $data = $request->all();
             $bolo = Bolo::create($data);
-
             return response()->json([
                 'error' => false,
                 'data' => $bolo
