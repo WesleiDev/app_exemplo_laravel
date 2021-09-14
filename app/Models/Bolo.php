@@ -19,7 +19,8 @@ class Bolo extends Model
 
     protected $casts = [
         'quantidade' => 'float',
-        'valor' => 'float'
+        'valor' => 'float',
+        'peso' => 'float',
     ];
 
     function setValorAttribute($value){
