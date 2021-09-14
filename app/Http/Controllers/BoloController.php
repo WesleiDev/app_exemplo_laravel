@@ -68,7 +68,20 @@ class BoloController extends Controller
      */
     public function show($id)
     {
-        //
+        try{
+
+            $bolo = Bolo::findOrFail($id);
+
+            return response()->json([
+                'error' => false,
+                'data' => $bolo
+            ]);
+        }catch(\Exception $e){
+            return response()->json([
+                'error' => true,
+                'message' => 'Erro ao consultar bolo: '.$e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -79,7 +92,7 @@ class BoloController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -89,9 +102,24 @@ class BoloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BoloRequest $request, $id)
     {
-        //
+        try{
+            //TODO Implementar no Observer para quando atualizar o boleto verificar se tem quantidade e se tiver quantidade, enviar os emails
+            $data = $request->all();
+            $bolo = Bolo::findOrFail($id);
+            $bolo->update($data);
+
+            return response()->json([
+                'error' => false,
+                'data' => $bolo
+            ]);
+        }catch(\Exception $e){
+            return response()->json([
+                'error' => true,
+                'message' => 'Erro ao atualizar bolo: '.$e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -102,6 +130,20 @@ class BoloController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            //TODO Implementar no Observer de Boloto para ao remover o bolo, remover todos os emails interessados
+            $bolo = Bolo::findOrFail($id);
+            $bolo->delete();
+
+        }catch(\Exception $e){
+            return response()->json([
+                'error' => true,
+                'message' => 'Erro ao excluir bolo: '.$e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function teste(){
+        
     }
 }

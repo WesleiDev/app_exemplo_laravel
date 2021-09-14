@@ -2,7 +2,7 @@
 <h3>Aplicação desenvolvida em Laraval 8</h3>
 
 <h4>Recursos utilizados</h4>
-   - [] Filas
+   - [] Queues
    - [] Resources
    - [x] Seeder
    - [x] Factory
