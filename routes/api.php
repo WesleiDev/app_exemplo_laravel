@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BoloController;
+use App\Http\Controllers\InteressadoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResources([
-    'bolo' => BoloController::class
+    'bolo'          => BoloController::class,
+    'interessado'   => InteressadoController::class
 ]);
 

@@ -46,7 +46,7 @@ class BoloRequest extends FormRequest
 
     protected function failedValidation(Validator $validator)
     {
-        $response = new Response(['error' => true, 'data' => $validator->errors()], 422);
+        $response = new Response(['erro' => true, 'data' => $validator->errors()], 422);
         throw new ValidationException($validator, $response);
     }
 }

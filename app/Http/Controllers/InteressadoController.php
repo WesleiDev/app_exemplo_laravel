@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BoloRequest;
-use App\Http\Resources\BoloResource;
-use App\Models\Bolo;
+use App\Http\Resources\InteressadoResource;
+use App\Models\Interessado;
 use Illuminate\Http\Request;
 
-class BoloController extends Controller
+class InteressadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +16,11 @@ class BoloController extends Controller
     public function index()
     {
         try{
-            return BoloResource::collection(Bolo::paginate());
+            return InteressadoResource::collection(Interessado::paginate());
         }catch(\Exception $e){
             return response()->json([
                 'erro' => true,
-                'data' => 'Erro ao consultar bolos: '.$e->getMessage()
+                'data' => 'Erro ao consultar interessados: '.$e->getMessage()
             ], 500);
         }
     }
@@ -40,24 +39,29 @@ class BoloController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function store(BoloRequest $request)
+    public function store(Request $request)
     {
-        try{
-
+        try {
             $data = $request->all();
-            $bolo = Bolo::create($data);
+           // dd($data);
+
+            foreach ($data as $interessado ){
+                Interessado::create($interessado);
+            }
+
             return response()->json([
                 'erro' => false,
-                'data' => $bolo
+                'data' => 'Interessados adicionados com sucesso!'
             ]);
         }catch(\Exception $e){
             return response()->json([
-                'erro' => true,
-                'data' => 'Erro ao cadastrar bolo: '.$e->getMessage()
+               'erro'  => true,
+                'data' => 'Erro ao cadastrar Interessado: '.$e->getMessage()
             ], 500);
         }
+
     }
 
     /**
@@ -70,17 +74,17 @@ class BoloController extends Controller
     {
         try{
 
-            $bolo = Bolo::findOrFail($id);
-            $bolo->interessado;
+            $interessado = Interessado::findOrFail($id);
+            $interessado->bolo;
 
             return response()->json([
                 'erro' => false,
-                'data' => $bolo
+                'data' => $interessado
             ]);
         }catch(\Exception $e){
             return response()->json([
                 'erro' => true,
-                'data' => 'Erro ao consultar bolo: '.$e->getMessage()
+                'data' => 'Erro ao consultar interessado: '.$e->getMessage()
             ], 500);
         }
     }
@@ -93,7 +97,7 @@ class BoloController extends Controller
      */
     public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -103,23 +107,21 @@ class BoloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(BoloRequest $request, $id)
+    public function update(Request $request, $id)
     {
         try{
-            //TODO Implementar no Observer para quando atualizar o boleto verificar se tem quantidade e se tiver quantidade, enviar os emails
             $data = $request->all();
-
-            $bolo = Bolo::find($id);
-            $bolo->update($data);
+            $interessado = Interessado::findOrFail($id);
+            $interessado->update($data);
 
             return response()->json([
                 'erro' => false,
-                'data' => $bolo
+                'data' => $interessado
             ]);
         }catch(\Exception $e){
             return response()->json([
                 'erro' => true,
-                'data' => 'Erro ao atualizar bolo: '.$e->getMessage()
+                'data' => 'Erro ao atualizar interessado: '.$e->getMessage()
             ], 500);
         }
     }
@@ -133,20 +135,18 @@ class BoloController extends Controller
     public function destroy($id)
     {
         try{
-            //TODO Implementar no Observer de Boloto para ao remover o bolo, remover todos os emails interessados
-            $bolo = Bolo::findOrFail($id);
-            $bolo->delete();
+            $interessado = Interessado::findOrFail($id);
+            $interessado->delete();
             return response()->json([
-               'erro' => false,
-               'data' => 'Bolo excluido com sucesso!'
+                'erro' => false,
+                'data' => 'Interessado excluido com sucesso!'
             ]);
 
         }catch(\Exception $e){
             return response()->json([
                 'erro' => true,
-                'data' => 'Erro ao excluir bolo: '.$e->getMessage()
+                'data' => 'Erro ao excluir Interessado: '.$e->getMessage()
             ], 500);
         }
     }
-
 }

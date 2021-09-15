@@ -3,12 +3,12 @@
 
 <h4>Recursos utilizados</h4>
    - [] Queues
-   - [] Resources
+   - [x] Resources
    - [x] Seeder
    - [x] Factory
    - [x] Mutators
    - [x] Casts
-   - [] Observers
+   - [x] Observers
    - [] Scheduling
    - [x] FormRequest
 

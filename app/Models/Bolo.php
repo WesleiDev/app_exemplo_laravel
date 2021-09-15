@@ -30,4 +30,8 @@ class Bolo extends Model
     function setPesoAttribute($value){
         $this->attributes['peso'] = Utils::formatReal($value);
     }
+
+    function interessado(){
+        return $this->hasMany(Interessado::class);
+    }
 }

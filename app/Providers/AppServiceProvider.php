@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Bolo;
+use App\Models\Interessado;
+use App\Observers\BoloObserver;
+use App\Observers\InteressadoObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Bolo::observe(BoloObserver::class);
+        Interessado::observe(InteressadoObserver::class);
     }
 }
