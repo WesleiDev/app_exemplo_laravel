@@ -37,5 +37,8 @@ da lista de interessados (É feito uma espécie de exclusão lógica para manter
 esse mesmo interessado novamente a lista para receber o email novamente quando houver disponibilidade do produto ). Todo esse processo 
 é realizado através de fila</p>
 
+<h4>Para facilitar os testes estou disponibilizando a COLLECTION das rotas para testar no postman</h4>
+[Acessar Collection Postman](https://www.getpostman.com/collections/6af04db4e4a039f9a040)
+
 
 
