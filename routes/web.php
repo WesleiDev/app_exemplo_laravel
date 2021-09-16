@@ -18,5 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/envio-email', function () {
-\App\Jobs\AvisoInteressado::dispatch(\App\Models\Interessado::find(1));
+    //Somente para testes
+    //return \Illuminate\Support\Facades\Mail::send(new \App\Mail\AvisoInressado(\App\Models\Interessado::find(1)));
+    App\Jobs\AvisoInteressado::dispatch(\App\Models\Interessado::find(1));
 });
